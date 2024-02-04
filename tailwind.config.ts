@@ -13,6 +13,13 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        "30": "repeat(30, minmax(0, 1fr))",
+      },
+      gridColumn: {
+        "span-0.5": "span 0.5/span 16",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

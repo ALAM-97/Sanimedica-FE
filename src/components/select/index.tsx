@@ -12,6 +12,7 @@ type SelectPropsTypes = {
   onChange: (value: string, name: string) => void;
   className?: string;
   emptyOption?: boolean;
+  withLabel?: boolean;
 };
 
 type SelectOptionTypes = {
@@ -22,7 +23,7 @@ type SelectOptionTypes = {
 const Select = (props: SelectPropsTypes) => {
   const [selected, setSelected] = useState(props.value || "");
 
-  const { onChange, emptyOption = false } = props;
+  const { onChange, emptyOption = false, withLabel = true } = props;
 
   const classNames = (...classes: any) => {
     return classes.filter(Boolean).join(" ");
@@ -41,10 +42,12 @@ const Select = (props: SelectPropsTypes) => {
       >
         {(open) => (
           <>
-            <Listbox.Label className="block text-md font-semibold leading-3 text-gray-400">
-              {props.label}
-            </Listbox.Label>
-            <div className="relative mt-2">
+            {withLabel && (
+              <Listbox.Label className="block text-md font-semibold leading-3 text-gray-400 mb-2">
+                {props.label}
+              </Listbox.Label>
+            )}
+            <div className="relative">
               <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-2 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-800 sm:text-sm sm:leading-6">
                 <span className="flex items-center">
                   {selected ? (

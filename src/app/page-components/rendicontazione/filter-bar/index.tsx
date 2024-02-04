@@ -2,7 +2,7 @@
 
 import Input from "@/components/input";
 import Select from "@/components/select";
-import { aslOptions, professionsOptions } from "@/data";
+import { aslOptions, professionsOptions, statusOptions } from "@/data";
 
 type FilterBarPropsTypes = {
   handleChange: (value: string, name: string) => void;
@@ -13,6 +13,7 @@ type ObjPropsTypes = {
   name: string;
   asl: string;
   profession: string;
+  status: string;
 };
 
 const FilterBar = (props: FilterBarPropsTypes) => {
@@ -46,6 +47,16 @@ const FilterBar = (props: FilterBarPropsTypes) => {
           value={filterObj.profession}
           emptyOption={true}
           options={professionsOptions}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="col-span-2">
+        <Select
+          label="Status"
+          name="status"
+          value={filterObj.status}
+          emptyOption={true}
+          options={statusOptions}
           onChange={handleChange}
         />
       </div>

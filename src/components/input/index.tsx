@@ -10,20 +10,23 @@ type InputPropsTypes = {
   leftText?: string;
   placeholer?: string;
   className?: string;
+  withLabel?: boolean;
 };
 
 const Input = (props: InputPropsTypes) => {
-  const { onChange } = props;
+  const { onChange, withLabel = true } = props;
 
   return (
     <div>
       <div className={`${props.className} flex items-center justify-between `}>
-        <label
-          htmlFor="email"
-          className="block text-md font-semibold leading-3 text-gray-400 "
-        >
-          {props.label}
-        </label>
+        {withLabel && (
+          <label
+            htmlFor="email"
+            className="block text-md font-semibold leading-3 text-gray-400 mb-2"
+          >
+            {props.label}
+          </label>
+        )}
         {props.leftText && (
           <div className="text-sm">
             <a href="#" className="font-semibold text-gray-400 ">
@@ -32,7 +35,7 @@ const Input = (props: InputPropsTypes) => {
           </div>
         )}
       </div>
-      <div className="mt-2">
+      <div className="">
         <input
           placeholder={props.placeholer || ""}
           id={props.name}
