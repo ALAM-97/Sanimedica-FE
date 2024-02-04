@@ -11,6 +11,7 @@ type SelectPropsTypes = {
   value: string;
   onChange: (value: string, name: string) => void;
   className?: string;
+  emptyOption?: boolean;
 };
 
 type SelectOptionTypes = {
@@ -21,7 +22,7 @@ type SelectOptionTypes = {
 const Select = (props: SelectPropsTypes) => {
   const [selected, setSelected] = useState(props.value || "");
 
-  const { onChange } = props;
+  const { onChange, emptyOption = false } = props;
 
   const classNames = (...classes: any) => {
     return classes.filter(Boolean).join(" ");
@@ -71,47 +72,90 @@ const Select = (props: SelectPropsTypes) => {
                 leaveTo="opacity-0"
               >
                 <Listbox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                  {props.options?.map((opt) => (
-                    <Listbox.Option
-                      key={opt.id}
-                      className={({ active }) =>
-                        classNames(
-                          active ? "bg-cyan-800 text-white" : "text-gray-900",
-                          "relative cursor-default select-none py-2 pl-3 pr-9"
-                        )
-                      }
-                      value={opt.title}
-                    >
-                      {({ selected, active }) => (
-                        <>
-                          <div className="flex items-center">
-                            <span
-                              className={classNames(
-                                selected ? "font-semibold" : "font-normal",
-                                "ml-3 block truncate"
-                              )}
-                            >
-                              {opt.title}
-                            </span>
-                          </div>
+                  <>
+                    {emptyOption && (
+                      <Listbox.Option
+                        key={0}
+                        className={({ active }) =>
+                          classNames(
+                            active ? "bg-cyan-800 text-white" : "text-gray-900",
+                            "relative cursor-default select-none py-2 pl-3 pr-9"
+                          )
+                        }
+                        value={""}
+                      >
+                        {({ selected, active }) => (
+                          <>
+                            <div className="flex items-center">
+                              <span
+                                className={classNames(
+                                  selected ? "font-semibold" : "font-normal",
+                                  "ml-3 block truncate"
+                                )}
+                              >
+                                Scegli...
+                              </span>
+                            </div>
 
-                          {selected ? (
-                            <span
-                              className={classNames(
-                                active ? "text-white" : "text-cyan-800",
-                                "absolute inset-y-0 right-0 flex items-center pr-4"
-                              )}
-                            >
-                              <CheckIcon
-                                className="h-5 w-5"
-                                aria-hidden="true"
-                              />
-                            </span>
-                          ) : null}
-                        </>
-                      )}
-                    </Listbox.Option>
-                  ))}
+                            {selected ? (
+                              <span
+                                className={classNames(
+                                  active ? "text-white" : "text-cyan-800",
+                                  "absolute inset-y-0 right-0 flex items-center pr-4"
+                                )}
+                              >
+                                <CheckIcon
+                                  className="h-5 w-5"
+                                  aria-hidden="true"
+                                />
+                              </span>
+                            ) : null}
+                          </>
+                        )}
+                      </Listbox.Option>
+                    )}
+                    {props.options?.map((opt) => (
+                      <Listbox.Option
+                        key={opt.id}
+                        className={({ active }) =>
+                          classNames(
+                            active ? "bg-cyan-800 text-white" : "text-gray-900",
+                            "relative cursor-default select-none py-2 pl-3 pr-9"
+                          )
+                        }
+                        value={opt.title}
+                      >
+                        {({ selected, active }) => (
+                          <>
+                            <div className="flex items-center">
+                              <span
+                                className={classNames(
+                                  selected ? "font-semibold" : "font-normal",
+                                  "ml-3 block truncate"
+                                )}
+                              >
+                                {opt.title}
+                              </span>
+                            </div>
+
+                            {selected ? (
+                              <span
+                                className={classNames(
+                                  active ? "text-white" : "text-cyan-800",
+                                  "absolute inset-y-0 right-0 flex items-center pr-4"
+                                )}
+                              >
+                                <CheckIcon
+                                  className="h-5 w-5"
+                                  aria-hidden="true"
+                                />
+                              </span>
+                            ) : null}
+                          </>
+                        )}
+                      </Listbox.Option>
+                    ))}
+                  </>
                 </Listbox.Options>
               </Transition>
             </div>

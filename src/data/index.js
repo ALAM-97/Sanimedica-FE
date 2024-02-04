@@ -88,3 +88,25 @@ export const homepageSections = [
     path: "/homepage/lista-fatture",
   },
 ];
+
+export const aslOptions = [
+  { title: "RM1", id: 1 },
+  { title: "RM1 AI", id: 2 },
+  { title: "RM2", id: 3 },
+  { title: "RM2 AI", id: 4 },
+  { title: "RM3", id: 5 },
+  { title: "RM3 AI", id: 6 },
+  { title: "RM5", id: 7 },
+  { title: "RM5 AI", id: 8 },
+  { title: "RM6", id: 9 },
+  { title: "RM6 AI", id: 10 },
+];
+
+export const professionsOptions = [
+  { title: "Infermiere", id: 1 },
+  { title: "Fisioterapista", id: 2 },
+  { title: "Logopedista", id: 3 },
+  { title: "OSS", id: 4 },
+  { title: "TNPEE", id: 5 },
+  { title: "Medico", id: 6 },
+];

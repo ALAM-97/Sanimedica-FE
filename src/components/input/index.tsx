@@ -3,12 +3,13 @@
 type InputPropsTypes = {
   label: string;
   name: string;
-  type: string;
+  type?: string;
   onChange: (value: string, name: string) => void;
   value?: string;
   required?: boolean;
   leftText?: string;
   placeholer?: string;
+  className?: string;
 };
 
 const Input = (props: InputPropsTypes) => {
@@ -16,10 +17,10 @@ const Input = (props: InputPropsTypes) => {
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className={`${props.className} flex items-center justify-between `}>
         <label
           htmlFor="email"
-          className="block text-md font-semibold leading-3 text-gray-400"
+          className="block text-md font-semibold leading-3 text-gray-400 "
         >
           {props.label}
         </label>
@@ -36,11 +37,11 @@ const Input = (props: InputPropsTypes) => {
           placeholder={props.placeholer || ""}
           id={props.name}
           name={props.name}
-          type={props.type}
+          type={props.type || "text"}
           value={props.value || ""}
           onChange={(e) => onChange(e.target.value, e.target.name)}
           required={props.required || true}
-          className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-800 sm:text-sm sm:leading-6"
+          className="block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-800"
         />
       </div>
     </div>
