@@ -1,76 +1,72 @@
 "use client";
 
-import { useState } from "react";
-import Card from "@/components/card";
+import { useEffect, useMemo, useState } from "react";
 import Header from "@/components/header";
 import Select from "@/components/select";
-import Image from "next/image";
 import { monthsOptions, yearsOptions } from "@/data";
-import rendicontazione from "@/img/icons/rendicontazione.png";
-import fatturazione from "@/img/icons/fatturazione.png";
-import listaFatture from "@/img/icons/lista-fatture.png";
+import { XMarkIcon } from "@heroicons/react/20/solid";
+import HomepageBody from "./components";
 
 const Homepage = () => {
-  const [period, setPeriod] = useState({ month: "", year: "" });
+  const [period, setPeriod] = useState({ month: "Gennaio", year: "2024" });
+  const [loadedFile, setLoadedFile] = useState("");
+  const [showLoader, setShowLoader] = useState(false);
 
-  const homepageSections = [
-    {
-      name: "Rendicontazione",
-      img: rendicontazione,
-      disabled: false,
-    },
-    {
-      name: "Fatturazione",
-      img: fatturazione,
-      disabled: false,
-    },
-    {
-      name: "Lista Fatture",
-      img: listaFatture,
-      disabled: true,
-    },
-  ];
+  useEffect(() => {
+    if (period.month === "Gennaio" && period.year === "2024") {
+      return setLoadedFile("consolidato(32).csv");
+    }
+    return setLoadedFile("");
+  }, [period]);
+
+  const onUploadFile = (value: string) => {
+    setShowLoader(true);
+    setTimeout(() => {
+      setLoadedFile(value);
+      // Assuming you have a function to hide the loader
+      setShowLoader(false);
+      setLoadedFile(value);
+    }, 2000); // 2000 milliseconds = 2 seconds
+  };
 
   return (
     <>
       <Header />
-      <div className="w-full h-5/6 flex flex-col justify-center items-center">
-        <div className="flex gap-5 mb-10">
+      <div className={`w-full flex flex-col justify-center items-center h-5/6`}>
+        <div className="flex gap-5 mb-10 w-4/12">
           <Select
             options={monthsOptions}
             name="month"
             label="Mese"
-            className="w-96"
+            value={period.month}
+            className="w-5/6"
             onChange={(value, name) => setPeriod({ ...period, [name]: value })}
           />
           <Select
             options={yearsOptions}
             name="year"
             label="Anno"
-            className="w-52"
+            value={period.year}
+            className="w-3/6"
             onChange={(value, name) => setPeriod({ ...period, [name]: value })}
           />
         </div>
-        <div className="flex gap-5">
-          {homepageSections.map((section) => (
-            <Card
-              className="opacity-50 hover:opacity-75"
-              key={section.name}
-              disabled={section.disabled}
-            >
-              <Image
-                src={section.img}
-                alt={section.name}
-                width={200}
-                className=""
-              />
-              <div className="pt-3 text-center font-bold text-2xl w-">
-                {section.name}
-              </div>
-            </Card>
-          ))}
-        </div>
+        <HomepageBody
+          loadedFile={loadedFile}
+          onUploadFile={onUploadFile}
+          showLoader={showLoader}
+        />
       </div>
+      {loadedFile !== "" && !showLoader && (
+        <div className="text-center flex justify-center items-center text-xl">
+          <p className="font-semibold text-neutral-600 me-2">File caricato: </p>
+          <p className="font-semibold text-neutral-400">{loadedFile}</p>
+          <XMarkIcon
+            className="h-8 w-8 text-red-600 cursor-pointer"
+            onClick={() => setLoadedFile("")}
+          />
+        </div>
+      )}
     </>
   );
 };

@@ -1,3 +1,7 @@
+import rendicontazione from "@/img/icons/rendicontazione.png";
+import fatturazione from "@/img/icons/fatturazione.png";
+import listaFatture from "@/img/icons/lista-fatture.png";
+
 export const monthsOptions = [
   {
     id: 1,
@@ -61,5 +65,23 @@ export const yearsOptions = [
   {
     id: 3,
     title: "2026",
+  },
+];
+
+export const homepageSections = [
+  {
+    name: "Rendicontazione",
+    img: rendicontazione,
+    disabled: false,
+  },
+  {
+    name: "Fatturazione",
+    img: fatturazione,
+    disabled: false,
+  },
+  {
+    name: "Lista Fatture",
+    img: listaFatture,
+    disabled: true,
   },
 ];

@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, SetStateAction, useState } from "react";
+import { Fragment, useState } from "react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { Listbox, Transition } from "@headlessui/react";
 
@@ -8,6 +8,7 @@ type SelectPropsTypes = {
   options: SelectOptionTypes[];
   label: string;
   name: string;
+  value: string;
   onChange: (value: string, name: string) => void;
   className?: string;
 };
@@ -18,7 +19,7 @@ type SelectOptionTypes = {
 };
 
 const Select = (props: SelectPropsTypes) => {
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState(props.value || "");
 
   const { onChange } = props;
 
