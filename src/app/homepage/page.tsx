@@ -5,7 +5,7 @@ import Header from "@/components/header";
 import Select from "@/components/select";
 import { monthsOptions, yearsOptions } from "@/data";
 import { XMarkIcon } from "@heroicons/react/20/solid";
-import HomepageBody from "./components";
+import HomepageBody from "../page-components/homepage/components";
 
 const Homepage = () => {
   const [period, setPeriod] = useState({ month: "Gennaio", year: "2024" });
