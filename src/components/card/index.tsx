@@ -4,7 +4,6 @@ type CardPropsTypes = {
   children: ReactNode;
   className?: any;
   disabled?: boolean;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
 const Card = (props: CardPropsTypes) => {

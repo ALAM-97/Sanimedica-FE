@@ -73,15 +73,18 @@ export const homepageSections = [
     name: "Rendicontazione",
     img: rendicontazione,
     disabled: false,
+    path: "/homepage/rendicontazione",
   },
   {
     name: "Fatturazione",
     img: fatturazione,
     disabled: false,
+    path: "/homepage/fatturazione",
   },
   {
     name: "Lista Fatture",
     img: listaFatture,
     disabled: true,
+    path: "/homepage/lista-fatture",
   },
 ];

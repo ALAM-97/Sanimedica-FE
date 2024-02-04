@@ -2,6 +2,7 @@ import Card from "@/components/card";
 import { homepageSections } from "@/data";
 import Image from "next/image";
 import uploadFile from "@/img/icons/upload-file.png";
+import Link from "next/link";
 
 type HomepageBodyPropsTypes = {
   loadedFile: string;
@@ -11,6 +12,7 @@ type HomepageBodyPropsTypes = {
 
 const HomepageBody = (props: HomepageBodyPropsTypes) => {
   const { onUploadFile } = props;
+
   return (
     <>
       {props.loadedFile !== "" ? (
@@ -20,17 +22,19 @@ const HomepageBody = (props: HomepageBodyPropsTypes) => {
           </h2>
           <div className="flex gap-5">
             {homepageSections.map((section) => (
-              <Card key={section.name} disabled={section.disabled}>
-                <Image
-                  src={section.img}
-                  alt={section.name}
-                  width={200}
-                  className=""
-                />
-                <div className="pt-3 text-center font-bold text-2xl w-">
-                  {section.name}
-                </div>
-              </Card>
+              <Link href={section.path} key={section.name}>
+                <Card disabled={section.disabled}>
+                  <Image
+                    src={section.img}
+                    alt={section.name}
+                    width={200}
+                    className=""
+                  />
+                  <div className="pt-3 text-center font-bold text-2xl w-">
+                    {section.name}
+                  </div>
+                </Card>
+              </Link>
             ))}
           </div>
         </>
