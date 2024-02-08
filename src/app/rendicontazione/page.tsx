@@ -41,7 +41,6 @@ const Rendicontazione = () => {
 
   return (
     <>
-      <Header />
       <FilterBar handleChange={handleFilterChange} filterObj={filterObj} />
       <Table onOpenModal={(name: string) => handleOpenModal(name)} />
 

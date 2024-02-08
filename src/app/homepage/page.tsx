@@ -31,7 +31,6 @@ const Homepage = () => {
 
   return (
     <>
-      <Header />
       <div className={`flex flex-col justify-center items-center h-5/6`}>
         <div className="flex gap-5 mb-10 w-4/12">
           <Select
