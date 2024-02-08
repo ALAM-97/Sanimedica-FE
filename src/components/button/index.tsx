@@ -17,7 +17,7 @@ const Button = (props: ButtonPropsTypes) => {
         type="submit"
         onClick={props.onClick}
         disabled={props.disabled}
-        className={`flex w-full justify-center rounded-md px-5 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm ${
+        className={`flex w-full justify-center rounded-md px-7 py-2 text-lg font-semibold leading-6 text-white shadow-sm ${
           props.disabled
             ? "bg-gray-300"
             : type === "primary"
