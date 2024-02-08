@@ -105,7 +105,7 @@ const Modal = (props: ModalPropsTypes) => {
                   </div>
                 </div>
                 <div className="bg-gray-50 px-7 py-4 flex justify-between items-center h-1/10">
-                  <Button text="Cancel" />
+                  <Button text="Chiudi" type="secondary" />
 
                   {/* <button
                     type="button"
@@ -115,7 +115,7 @@ const Modal = (props: ModalPropsTypes) => {
                   >
                     Cancel
                   </button> */}
-                  <Button text="Completato" />
+                  <Button text="Salva" />
                 </div>
               </Dialog.Panel>
             </Transition.Child>
