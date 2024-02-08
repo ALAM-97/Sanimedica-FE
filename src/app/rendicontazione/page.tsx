@@ -1,10 +1,9 @@
 "use client";
 
-import FilterBar from "@/app/page-components/rendicontazione/filter-bar";
-import Modal from "@/app/page-components/rendicontazione/modal";
-import Table from "@/app/page-components/rendicontazione/table/Index";
-import Header from "@/components/header";
 import { useState } from "react";
+import FilterBar from "../page-components/rendicontazione/filter-bar";
+import Table from "../page-components/rendicontazione/table/Index";
+import Modal from "../page-components/rendicontazione/modal";
 
 const Rendicontazione = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);

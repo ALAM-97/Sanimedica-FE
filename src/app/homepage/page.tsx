@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import Header from "@/components/header";
 import Select from "@/components/select";
 import { monthsOptions, yearsOptions } from "@/data";
 import { XMarkIcon } from "@heroicons/react/20/solid";

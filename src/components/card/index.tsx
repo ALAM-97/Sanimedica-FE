@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from "react";
+import { ReactNode } from "react";
 
 type CardPropsTypes = {
   children: ReactNode;
@@ -17,7 +17,7 @@ const Card = (props: CardPropsTypes) => {
     disabled
       ? "opacity-30"
       : `bg-gray-200 cursor-pointer ${className} hover:ring-4 hover:ring-cyan-800 opacity-50 hover:opacity-75`,
-    "flex flex-col rounded-lg px-10 py-5 "
+    "flex flex-col rounded-lg"
   );
 
   return <div className={cardClassName}>{props.children}</div>;

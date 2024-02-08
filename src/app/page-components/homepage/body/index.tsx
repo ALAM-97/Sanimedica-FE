@@ -22,8 +22,13 @@ const HomepageBody = (props: HomepageBodyPropsTypes) => {
           </h2>
           <div className="flex gap-5">
             {homepageSections.map((section) => (
-              <Link href={section.path} key={section.name}>
-                <Card disabled={section.disabled}>
+              <Card disabled={section.disabled} key={section.name}>
+                <Link
+                  className={`${
+                    section.disabled && "cursor-default"
+                  } px-10 py-5 rounded-lg`}
+                  href={section.disabled ? "" : section.path}
+                >
                   <Image
                     src={section.img}
                     alt={section.name}
@@ -33,8 +38,8 @@ const HomepageBody = (props: HomepageBodyPropsTypes) => {
                   <div className="pt-3 text-center font-bold text-2xl w-">
                     {section.name}
                   </div>
-                </Card>
-              </Link>
+                </Link>
+              </Card>
             ))}
           </div>
         </>
