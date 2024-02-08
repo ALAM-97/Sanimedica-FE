@@ -22,9 +22,30 @@
   box-sizing: border-box;
 }
 
+/* Style the entire scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Style the track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Style the thumb */
+::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 10px;
+}
+
+/* Change the thumb color on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
 body {
   max-width: 1920px;
-  max-height: 100vh;
+  height: 100vh;
   margin: 0 auto;
 }
 

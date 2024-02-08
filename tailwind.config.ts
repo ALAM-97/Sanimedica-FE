@@ -20,6 +20,10 @@ const config: Config = {
       gridColumn: {
         "span-0.5": "span 0.5/span 16",
       },
+      height: {
+        "9/10": "90%",
+        "1/10": "10%",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

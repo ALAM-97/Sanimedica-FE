@@ -9,6 +9,7 @@ import { useState } from "react";
 const Rendicontazione = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [currentOperator, setCurrentOperator] = useState("");
+  const [rows, setRows] = useState([0]);
   const [filterObj, setFilterObj] = useState({
     name: "",
     asl: "",
@@ -16,25 +17,41 @@ const Rendicontazione = () => {
     status: "",
   });
 
-  const handleChange = (value: string, name: string) => {
+  const handleFilterChange = (value: string, name: string) => {
     setFilterObj({ ...filterObj, [name]: value });
   };
+
+  const handleAccessChange = () => {};
 
   const handleOpenModal = (name: string) => {
     setCurrentOperator(name);
     setModalIsOpen(true);
   };
 
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+    setRows([0]);
+  };
+
+  const handleAddRow = () => {
+    // add next number to the array to show more rows
+    const rowsLength = rows.length;
+    setRows([...rows, rows[rowsLength - 1] + 1]);
+  };
+
   return (
     <>
       <Header />
-      <FilterBar handleChange={handleChange} filterObj={filterObj} />
+      <FilterBar handleChange={handleFilterChange} filterObj={filterObj} />
       <Table onOpenModal={(name: string) => handleOpenModal(name)} />
 
       <Modal
+        handleChange={handleAccessChange}
         currentOperator={currentOperator}
         open={modalIsOpen}
-        onClose={() => setModalIsOpen(false)}
+        onClose={handleCloseModal}
+        rows={rows}
+        onAddRow={handleAddRow}
       />
     </>
   );

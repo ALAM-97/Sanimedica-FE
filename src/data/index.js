@@ -73,20 +73,30 @@ export const homepageSections = [
     name: "Rendicontazione",
     img: rendicontazione,
     disabled: false,
-    path: "/homepage/rendicontazione",
+    path: "/rendicontazione",
   },
   {
     name: "Fatturazione",
     img: fatturazione,
     disabled: false,
-    path: "/homepage/fatturazione",
+    path: "/fatturazione",
   },
   {
     name: "Lista Fatture",
     img: listaFatture,
     disabled: true,
-    path: "/homepage/lista-fatture",
+    path: "/lista-fatture",
   },
+];
+
+export const accessTypes = [
+  { title: "Accessi", id: "accessi" },
+  { title: "Festivi", id: "festivi" },
+  { title: "Affiancamento", id: "affiancamento" },
+  { title: "Prelievi", id: "prelievi" },
+  { title: "Vaccini", id: "vaccini" },
+  { title: "CCC", id: "ccc" },
+  { title: "Covid", id: "covid" },
 ];
 
 export const aslOptions = [

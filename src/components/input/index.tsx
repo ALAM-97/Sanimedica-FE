@@ -1,11 +1,11 @@
 "use client";
 
 type InputPropsTypes = {
-  label: string;
+  label?: string;
   name: string;
   type?: string;
   onChange: (value: string, name: string) => void;
-  value?: string;
+  value?: string | number;
   required?: boolean;
   leftText?: string;
   placeholer?: string;

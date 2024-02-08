@@ -32,14 +32,13 @@ const Homepage = () => {
   return (
     <>
       <Header />
-      <div className={`w-full flex flex-col justify-center items-center h-5/6`}>
+      <div className={`flex flex-col justify-center items-center h-5/6`}>
         <div className="flex gap-5 mb-10 w-4/12">
           <Select
             options={monthsOptions}
             name="month"
             label="Mese"
             value={period.month}
-            className="w-5/6"
             onChange={(value, name) => setPeriod({ ...period, [name]: value })}
           />
           <Select
@@ -47,7 +46,6 @@ const Homepage = () => {
             name="year"
             label="Anno"
             value={period.year}
-            className="w-3/6"
             onChange={(value, name) => setPeriod({ ...period, [name]: value })}
           />
         </div>

@@ -6,9 +6,9 @@ import { Listbox, Transition } from "@headlessui/react";
 
 type SelectPropsTypes = {
   options: SelectOptionTypes[];
-  label: string;
+  label?: string;
   name: string;
-  value: string;
+  value: string | number;
   onChange: (value: string, name: string) => void;
   className?: string;
   emptyOption?: boolean;
@@ -16,7 +16,7 @@ type SelectPropsTypes = {
 };
 
 type SelectOptionTypes = {
-  id: number;
+  id: number | string;
   title: string;
 };
 
